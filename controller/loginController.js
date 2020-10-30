@@ -6,5 +6,10 @@ module.exports ={
 
     signin: (req,res)=>{
         res.json( {"usuario": req.body.email} )
+    },
+
+    addUser: (req,res)=>{
+        res.json({"adicionar usuario"})
     }
+
 }
