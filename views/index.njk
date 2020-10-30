@@ -1,2 +1,22 @@
-<p>teste</p>
-<p>{{title}}</p>
+{% extends "_base.njk" %}
+
+{% block main %}
+
+<!-- Begin Page Content -->
+<div class="container">
+        <div class="jumbotron">
+                <h1 class="display-4">Login! </h1>
+                <p class="lead">
+                       Teste para efetuar login utilizando os pacotes:
+                       express, nunjucks
+
+                </p>
+                <hr class="my-4">
+                <p>Entre e faça o Login! </p>
+                <a class="btn btn-primary btn-lg" href="/login" role="button">saiba mais</a>
+        </div>
+
+</div>
+        <!-- /.container-fluid -->
+
+{% endblock %}
