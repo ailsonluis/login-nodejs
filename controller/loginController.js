@@ -7,6 +7,7 @@ const User = require('../models/user')
 module.exports ={
 
     register: (req,res) =>{
+       
         res.render('register.njk')
     },
 
@@ -109,8 +110,8 @@ module.exports ={
         
     },
 
-    addUser: (req,res)=>{
-        res.json("adicionar usuario")
+    logout: (req,res)=>{
+        res.redirect('/')
     }
 
 }

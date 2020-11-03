@@ -30,11 +30,11 @@ const getUserAdmin = async()=> await Promise.resolve(User.findOne({where :{ emai
 
 const validAdmin = async() => {
     const userAdmin = await getUserAdmin()
-    
+    //se não existir usuário cria um usuario admin@admin.com.br com senha 123456
     if (userAdmin === null){
         User.create({
             email:'admin@admin.com.br',
-            password:'1234567',
+            password:'$2b$10$TFdHDlH.ko7HdWOTV2nbYe9u0WyIZX83f0pgGlXL1IqhbnXOKYj4G',
             name:'demo',
             active:'S'
         }) 

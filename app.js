@@ -8,7 +8,10 @@ const bodyParser = require('body-parser')
 
 const indexRouter = require('./routes/index');
 const loginRouter = require('./routes/login');
+const logoutRouter = require('./routes/logout');
+
 const registerRouter = require('./routes/register')
+
 var usersRouter = require('./routes/users');
 
 var app = express();
@@ -32,6 +35,7 @@ app.use(bodyParser.json());
 
 app.use('/', indexRouter);
 app.use('/login', loginRouter);
+app.use('/logout', logoutRouter)
 app.use('/register',registerRouter);
 app.use('/users', usersRouter);
 
