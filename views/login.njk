@@ -1,32 +1,46 @@
 {% extends "_base.njk" %}
 
 {% block main %}
-   
-                  <form  class="needs-validation" novalidate action = '/login' method ='POST' >
-                    
-                    <div class="form-group">
-                      <input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" name="email" placeholder="Email..." required>
-                    </div>
-                    <div class="form-group">
-                      <input type="password" class="form-control" id="InputPassword" name = "password" placeholder="Senha" required>
-                    </div>
-                    
-                    <div class="form-group">
-                      <button type="submit" class="btn btn-primary btn-block">Login</button>
-                    </div>
-                                    
-                
-                  </form>
-                 <div class="form-group">
-                    <hr>
-
-                    <div class="text-center">
-                      <a class="small" href="/forgotpassword">Esqueci minha senha</a>
-                    </div>
-                    <div class="text-center">
-                      <a class="small" href="/register">Registrar-me</a>
-                    </div>
+  <div class='container'>
+   <div class="row">
+        <div class="col s12 m6">
+          <div class="card ">
+            <div class="card-content">
+              <h1 class="display-4">Login</h1>
+              <form  action='/login' method ='POST'>
+                <div class="row">
+                  <div class="input-field ">
+                    <input id="email" name='email' type="email" class="validate">
+                    <label for="email" class='active' data-error="wrong" data-success="right">Email</label>
                   </div>
-              
+                </div>
+                <div class="row">
+                  <div class="input-field">
+                    <input id="password" type="password" name="password" class="validate">
+                    <label for="password" class='active'>Senha</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <button class="btn waves-effect waves-light" type="submit" name="action">Login
+                    <i class="material-icons right"></i>
+                  </button>
+                </div>
+                <div class="row">
+                  <div class="text-center">
+                    <a class="small" href="/forgotpassword">Esqueci minha senha</a>
+                  </div>
+                  <div class="text-center">
+                    <a class="small" href="/register">Registrar-me</a>
+                  </div>
+                </div>  
+              </form>
+            </div>
+          <div>
+        </div>
+     </div> 
+  </div>
+                  
+                    
+                                  
 {% endblock %}
 

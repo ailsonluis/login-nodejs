@@ -1,0 +1,98 @@
+{% extends "_base.njk" %}
+
+{% block main %}
+<div class="container">
+    <div class="col s12 m6">
+    <div class="card">
+      <div class="card-content">
+            <h1 class="display-4">registro</h1>
+              
+              <form  action='/register' method='POST'>
+                <div class="row">
+                  <div class="input-field">
+                    <input type="text"  id="name" name="name"  required >
+                    <label for="name" class="active" >Nome</label>
+                    </div>
+                </div>
+                <div class="row">
+                  <div class="input-field ">
+                    <input id="email" name='email' type="email" class="validate" required>
+                    <label for="email" class='active' data-error="wrong" data-success="right">Email</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field">
+                    <input id="password" type="password" name="password" class="validate" required oninput="valid_password()">
+                    <label for="password" class='active'>Senha</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field">
+                    <input id="repeatpassword" type="password" name="repeatpassword" class="validate" required oninput="valid_password()">
+                    <label for="repeatpassword" class='active'>Senha</label>
+                  </div>
+                </div>
+                
+                <div class="row">
+                   <span id="password_strength"></span>
+                    {% if (message) %}
+                                                   
+                          <div class="card" id='alert' role="alert">
+                                                    
+                            <strong> {{ message.intro }}</strong> {{message.text }}
+                            
+                          </div>
+                        {% endif%}  
+                  </div>
+                <div class="row">
+                  <button class="btn waves-effect waves-light" type="submit" name="action">Salvar
+                    <i class="material-icons right"></i>
+                  </button>
+                </div>
+                <div class="row">
+                  <div class="text-center">
+                    <a class="small" href="/forgotpassword">Esqueci minha senha</a>
+                  </div>
+                  <div class="text-center">
+                    <a class="small" href="/login">Já possue conta, faça seu login!</a>
+                  </div>
+                </div>  
+                
+              </form>
+         </div>
+         
+     </div>
+</div>
+
+  </div>
+{% endblock %}
+
+{% block js %}
+  
+  
+
+  <script>
+      function valid_password() {
+        let password = $("#password").val()
+        let repeatpass = $("#repeatpassword").val()
+        let password_strength = document.getElementById("password_strength");
+        let passwordStrength =""
+        if (password.length < 4 ){
+           passwordStrength = "Informar de até 4 a 6 digitos"
+           password_strength.innerHTML = passwordStrength
+           password_strength.style.color = 'red'
+        }else{          
+            if ( password != repeatpass ){ 
+              passwordStrength = "As senhas devem ser iguais."
+              password_strength.innerHTML = passwordStrength
+              password_strength.style.color = 'red'
+            }else{
+              passwordStrength = ""
+              password_strength.innerHTML = passwordStrength
+              password_strength.style.color = 'green'
+            }
+        }
+      }
+  </script>
+
+{% endblock %}
