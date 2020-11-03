@@ -102,15 +102,17 @@ module.exports ={
         }
         let token =  jwt.sign(payload, SECRET)
         
-        console.log("payload",payload)
-        console.log("token", token)
+        //console.log("payload",payload)
+        //console.log("token", token)
       
 
-        res.render("protectpage.njk")
+        res.cookie('x-access-key', token)
+            .redirect('/protectpage')
         
     },
 
     logout: (req,res)=>{
+        res.clearCookie('x-access-key');
         res.redirect('/')
     }
 
