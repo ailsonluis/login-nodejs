@@ -14,6 +14,8 @@ const loginRouter = require('./routes/login');
 const logoutRouter = require('./routes/logout');
 const registerRouter = require('./routes/register')
 const protectpageRouter = require('./routes/protectpage')
+const changepasswordRouter = require('./routes/changepassword')
+
 
 
 var app = express();
@@ -61,6 +63,7 @@ app.use('/login', loginRouter);
 app.use('/logout', logoutRouter)
 app.use('/register',registerRouter);
 app.use('/protectpage',isAuthenticated,protectpageRouter);
+app.use('/changepassword',isAuthenticated,changepasswordRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

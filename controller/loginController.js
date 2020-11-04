@@ -85,8 +85,8 @@ module.exports ={
         //const user = await.db('users').where({email: pEmail}).first()
         if (!user) return res.status(400).send("Usuário não existe")
 
-       // const isMatch = bcrypt.compareSync(pPassword, user.password)
-        //if (!isMatch) return res.status(401).send('Email/Senha inválidos!')
+        const isMatch = bcrypt.compareSync(pPassword, user.password)
+        if (!isMatch) return res.status(401).send('Email/Senha inválidos!')
 
         if (user.active != 'S') return res.status(401).send('Usuário não esta ativo!')
         
@@ -110,7 +110,23 @@ module.exports ={
             .redirect('/protectpage')
         
     },
+    changePassword: (req,res) =>{
+        let token = req.cookies['x-access-key']
+        jwt.verify(token, SECRET, function(err, decoded) { 
+            if (err){
+                console.log("TokenInválido")
+                res.redirect("/login")        
+            }
+            if (decoded){
+                console.log("token validado")
+                res.render('changepassword.njk',{ decoded })
+            }
+        })
+    },
+    newPassword: async (req,res) =>{
 
+        res.json("Senha trocada!")
+    },
     logout: (req,res)=>{
         res.clearCookie('x-access-key');
         res.redirect('/')
